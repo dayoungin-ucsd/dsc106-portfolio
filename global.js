@@ -35,5 +35,9 @@ for (let p of pages) {
         url = BASE_PATH + url;
     }
     
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    // nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    nav.append(a);
 }
