@@ -109,10 +109,6 @@ article{
     margin-bottom: 1em;
 }
 
-html{
-    color-scheme: light dark;
-}
-
 .color-scheme{
     position: absolute;
     top: 1rem;
