@@ -26,5 +26,6 @@ document.body.prepend(nav);
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
-    let 
+    
+    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
