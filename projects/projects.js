@@ -13,6 +13,7 @@ titleElement.textContent = `${projects.length} Projects`;
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
 let query = '';
+let selectedIndex = -1;
 
 let searchInput = document.querySelector('.searchBar');
 
@@ -50,11 +51,38 @@ function renderPieChart(projectsGiven) {
     let legend = d3.select('.legend');
     legend.selectAll('li').remove();
 
-    newArcs.forEach((arc, idx) => {
+    newArcs.forEach((arc, i) => {
         newSVG
             .append('path')
             .attr('d', arc)
-            .attr('fill', colors(idx));
+            .attr('fill', colors(i))
+            .on('click', () => {
+                selectedIndex = selectedIndex === i ? -1 : i;
+
+                newSVG
+                .selectAll('path')
+                .attr('class', (_, idx) => (
+                    idx === selectedIndex ? 'selected' : ''
+                ));
+
+                legend
+                    .selectAll('li')
+                    .attr('class', (_, idx) => (
+                        idx === selectedIndex ? 'legend-item selected' : 'legend-item'
+                    ));
+
+                if (selectedIndex === -1) {
+                    renderProjects(projects, projectsContainer, 'h2');
+                } else {
+                    let selectedYear = newData[selectedIndex].label;
+
+                    let filteredProjects = projects.filter((project) =>
+                        project.year === selectedYear
+                    );
+                    
+                    renderProjects(filteredProjects, projectsContainer, 'h2');
+                }
+            });
     });
 
     newData.forEach((d, idx) => {
