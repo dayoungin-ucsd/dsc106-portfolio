@@ -17,15 +17,21 @@ let selectedIndex = -1;
 
 let searchInput = document.querySelector('.searchBar');
 
+// searchInput.addEventListener('change', (event) => {
+//     query = event.target.value;
+
+//     let filteredProjects = projects.filter((project) => {
+//         let values = Object.values(project).join('\n').toLowerCase();
+//         return values.includes(query.toLowerCase());
+//     });
+//     renderProjects(filteredProjects, projectsContainer, 'h2');
+//     renderPieChart(filteredProjects);
+// });
+
 searchInput.addEventListener('change', (event) => {
     query = event.target.value;
-
-    let filteredProjects = projects.filter((project) => {
-        let values = Object.values(project).join('\n').toLowerCase();
-        return values.includes(query.toLowerCase());
-    });
-    renderProjects(filteredProjects, projectsContainer, 'h2');
-    renderPieChart(filteredProjects);
+    selectedIndex = -1;
+    applyFilters();
 });
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
@@ -71,17 +77,18 @@ function renderPieChart(projectsGiven) {
                         idx === selectedIndex ? 'legend-item selected' : 'legend-item'
                     ));
 
-                if (selectedIndex === -1) {
-                    renderProjects(projects, projectsContainer, 'h2');
-                } else {
-                    let selectedYear = newData[selectedIndex].label;
+                // if (selectedIndex === -1) {
+                //     renderProjects(projects, projectsContainer, 'h2');
+                // } else {
+                //     let selectedYear = newData[selectedIndex].label;
 
-                    let filteredProjects = projects.filter((project) =>
-                        project.year === selectedYear
-                    );
-                    
-                    renderProjects(filteredProjects, projectsContainer, 'h2');
-                }
+                //     let filteredProjects = projects.filter((project) =>
+                //         project.year === selectedYear
+                //     );
+
+                //     renderProjects(filteredProjects, projectsContainer, 'h2');
+                // }
+                applyFilters();
             });
     });
 
@@ -92,6 +99,30 @@ function renderPieChart(projectsGiven) {
             .attr('class', 'legend-item')
             .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
     });
+}
+
+function applyFilters() {
+    let filteredProjects = projects.filter((project) => {
+        let values = Object.values(project).join('\n').toLowerCase();
+        return values.includes(query.toLowerCase());
+    });
+
+    if (selectedIndex !== -1) {
+        let selectedYear = d3.rollups(
+            filteredProjects,
+            (v) => v.length,
+            (d) => d.year,
+        ).map(([year, count]) => {
+            return { value: count, label: year };
+        })[selectedIndex]?.label;
+
+        filteredProjects = filteredProjects.filter((project) =>
+            project.year === selectedYear
+        );
+    }
+
+    renderProjects(filteredProjects, projectsContainer, 'h2');
+    renderPieChart(filteredProjects);
 }
 
 renderPieChart(projects);
