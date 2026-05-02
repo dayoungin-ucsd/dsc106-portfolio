@@ -58,42 +58,41 @@ function renderPieChart(projectsGiven) {
     let legend = d3.select('.legend');
     legend.selectAll('li').remove();
 
-    newArcs.forEach((arc, i) => {
-        newSVG
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', colors(i))
-            .on('click', () => {
-                // selectedIndex = selectedIndex === i ? -1 : i;
-                selectedYear = selectedYear === newData[i].label ? null : newData[i].label;
-                applyFilters();
+    // newArcs.forEach((arc, i) => {
+    //     newSVG
+    //         .append('path')
+    //         .attr('d', arc)
+    //         .attr('fill', colors(i))
+    //         .on('click', () => {
+    //             selectedIndex = selectedIndex === i ? -1 : i;
+    //             applyFilters();
 
-                newSVG
-                .selectAll('path')
-                .attr('class', (_, idx) => (
-                    idx === selectedIndex ? 'selected' : ''
-                ));
+    //             newSVG
+    //             .selectAll('path')
+    //             .attr('class', (_, idx) => (
+    //                 idx === selectedIndex ? 'selected' : ''
+    //             ));
 
-                legend
-                    .selectAll('li')
-                    .attr('class', (_, idx) => (
-                        idx === selectedIndex ? 'legend-item selected' : 'legend-item'
-                    ));
+    //             legend
+    //                 .selectAll('li')
+    //                 .attr('class', (_, idx) => (
+    //                     idx === selectedIndex ? 'legend-item selected' : 'legend-item'
+    //                 ));
 
-                // if (selectedIndex === -1) {
-                //     renderProjects(projects, projectsContainer, 'h2');
-                // } else {
-                //     let selectedYear = newData[selectedIndex].label;
+    //             if (selectedIndex === -1) {
+    //                 renderProjects(projects, projectsContainer, 'h2');
+    //             } else {
+    //                 let selectedYear = newData[selectedIndex].label;
 
-                //     let filteredProjects = projects.filter((project) =>
-                //         project.year === selectedYear
-                //     );
+    //                 let filteredProjects = projects.filter((project) =>
+    //                     project.year === selectedYear
+    //                 );
 
-                //     renderProjects(filteredProjects, projectsContainer, 'h2');
-                // }
-                applyFilters();
-            });
-    });
+    //                 renderProjects(filteredProjects, projectsContainer, 'h2');
+    //             }
+    //             applyFilters();
+    //         });
+    // });
 
     // newData.forEach((d, idx) => {
     //     legend
@@ -102,6 +101,18 @@ function renderPieChart(projectsGiven) {
     //         .attr('class', 'legend-item')
     //         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
     // });
+// }
+
+    newArcs.forEach((arc, i) => {
+        newSVG
+            .append('path')
+            .attr('d', arc)
+            .attr('fill', colors(i))
+            .on('click', () => {
+                selectedYear = selectedYear === newData[i].label ? null : newData[i].label;
+                applyFilters();
+            });
+    });
 
     newData.forEach((d, idx) => {
         legend
@@ -109,31 +120,7 @@ function renderPieChart(projectsGiven) {
             .attr('style', `--color:${colors(idx)}`)
             .attr('class', d.label === selectedYear ? 'legend-item selected' : 'legend-item')
             .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-     });
-}
-
-function applyFilters() {
-    let filteredProjects = projects.filter((project) => {
-        let values = Object.values(project).join('\n').toLowerCase();
-        return values.includes(query.toLowerCase());
     });
-
-    if (selectedIndex !== -1) {
-        let selectedYear = d3.rollups(
-            filteredProjects,
-            (v) => v.length,
-            (d) => d.year,
-        ).map(([year, count]) => {
-            return { value: count, label: year };
-        })[selectedIndex]?.label;
-
-        filteredProjects = filteredProjects.filter((project) =>
-            project.year === selectedYear
-        );
-    }
-
-    renderProjects(filteredProjects, projectsContainer, 'h2');
-    renderPieChart(filteredProjects);
 }
 
 function applyFilters() {
