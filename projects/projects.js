@@ -124,19 +124,20 @@ function renderPieChart(projectsGiven) {
 }
 
 function applyFilters() {
-    let filteredProjects = projects.filter((project) => {
+    let queryFilteredProjects = projects.filter((project) => {
         let values = Object.values(project).join('\n').toLowerCase();
         return values.includes(query.toLowerCase());
     });
 
+    let displayedProjects = queryFilteredProjects;
+
     if (selectedYear !== null) {
-        filteredProjects = filteredProjects.filter((project) =>
+        displayedProjects = queryFilteredProjects.filter((project) =>
             project.year === selectedYear
         );
     }
 
-    renderProjects(filteredProjects, projectsContainer, 'h2');
-    renderPieChart(filteredProjects);
+    renderProjects(displayedProjects, projectsContainer, 'h2');
+    renderPieChart(queryFilteredProjects);
 }
-
 renderPieChart(projects);
