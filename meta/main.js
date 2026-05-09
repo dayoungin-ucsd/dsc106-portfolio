@@ -21,7 +21,8 @@ function processCommits(data) {
         let { author, date, time, timezone, datetime } = first;
         let ret = {
             id: commit,
-            url: 'https://github.com/vis-society/lab-7/commit/' + commit,
+            // url: 'https://github.com/vis-society/lab-7/commit/' + commit,
+            url: 'https://github.com/dayoungin-ucsd/dsc106-portfolio' + commit,
             author,
             date,
             time,
@@ -190,6 +191,10 @@ function renderScatterPlot(data, commits) {
             d3.select(event.currentTarget).style('fill-opacity', 0.7);
             updateTooltipVisibility(false);
         });
+}
+
+function createBrushSelector(svg) {
+    svg.call(d3.brush());
 }
 
 let data = await loadData();
