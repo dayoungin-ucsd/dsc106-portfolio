@@ -137,9 +137,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
             ${
                 project.url
                 ? `<a href="${project.url}" target="_blank">
-                        <img src="${BASE_PATH}${project.image}" alt="${project.title}">
+                        <img src="${imageSrc}" alt="${project.title}">
                    </a>`
-                : `<img src="${BASE_PATH}${project.image}" alt="${project.title}">`
+                : `<img src="${imageSrc}" alt="${project.title}">`
             }
 
             <div>
