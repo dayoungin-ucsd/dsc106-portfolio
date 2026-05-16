@@ -2,7 +2,7 @@
     {
         "title": "Bikewatching",
         "year": "2026",
-        "image": "images/bikewatching.png",
+        "image": "../images/bikewatching.png",
         "description": "Interactive visualization of bike traffic, bike lanes, and traffic flow in the Boston area.",
         "url": "https://dayoungin-ucsd.github.io/dsc106-lab7-geospatial-visualizations/"
     },
