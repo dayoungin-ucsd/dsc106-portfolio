@@ -119,6 +119,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     for (let project of projects) {
         const article = document.createElement('article');
 
+        const imageSrc = project.image.startsWith('http')
+            ? project.image
+            : BASE_PATH + project.image;
+
         article.innerHTML = `
             <!--<${headingLevel}>${project.title}</${headingLevel}>
             <img src="${project.image}" alt="${project.title}">-->
