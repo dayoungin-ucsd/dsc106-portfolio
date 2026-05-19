@@ -380,3 +380,8 @@ circle.selected {
 .step {
     padding-bottom: 80vh;
 }
+
+#files small {
+    display: block;
+    color: gray;
+}

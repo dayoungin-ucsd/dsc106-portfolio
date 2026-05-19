@@ -340,14 +340,25 @@ function updateFileDisplay(filteredCommits) {
         .join(
             // This code only runs when the div is initially rendered
             (enter) =>
+            // enter.append('div').call((div) => {
+            //     div.append('dt').append('code');
+            //     div.append('dd');
+            // }),
             enter.append('div').call((div) => {
-                div.append('dt').append('code');
+                const dt = div.append('dt');
+
+                dt.append('code');
+                dt.append('small');
+
                 div.append('dd');
             }),
         );
 
     // This code updates the div info
     filesContainer.select('dt > code').text((d) => d.name);
+    filesContainer
+        .select('dt > small')
+        .text((d) => `${d.lines.length} lines`);
     filesContainer
         .select('dd')
         .selectAll('div')
