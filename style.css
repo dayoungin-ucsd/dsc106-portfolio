@@ -269,3 +269,17 @@ circle.selected {
     object-fit: cover;
     display: block;
 }
+
+.commit-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+}
+
+#commit-progress {
+    flex: 1;
+}
+
+#commit-time {
+    margin-left: auto;
+}
