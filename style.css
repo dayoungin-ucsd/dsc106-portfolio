@@ -179,7 +179,7 @@ path {
     }
 }
 
-.stats {
+/* .stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -191,6 +191,25 @@ path {
 
 .stats dd {
     margin: 0;
+} */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+    gap: 1rem;
+}
+
+.stats dt {
+    grid-row: 1;
+    color: gray;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.stats dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2em;
 }
 
 .gridlines line {
@@ -274,14 +293,17 @@ circle.selected {
     display: block;
 }
 
-.commit-filter {
+/* .commit-filter {
     display: flex;
     align-items: center;
     gap: 1em;
-}
+} */
 
-.commit-filter label {
-    white-space: nowrap;
+.commit-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+    margin-bottom: 1.5em;
 }
 
 #commit-progress {
@@ -289,6 +311,11 @@ circle.selected {
 }
 
 #commit-time {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.commit-filter label {
     white-space: nowrap;
 }
 
