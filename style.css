@@ -200,14 +200,12 @@ path {
 }
 
 .stats dt {
-    grid-row: 1;
     color: gray;
     font-size: 0.8em;
     text-transform: uppercase;
 }
 
 .stats dd {
-    grid-row: 2;
     margin: 0;
     font-size: 2em;
 }
