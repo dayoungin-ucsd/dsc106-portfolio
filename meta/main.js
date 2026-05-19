@@ -352,7 +352,7 @@ function updateFileDisplay(filteredCommits) {
         .selectAll('div')
         .data((d) => d.lines)
         .join('div')
-        .attr('class', 'loc');
+        .attr('class', 'loc')
         .attr('style', (d) => `--color: ${colors(d.type)}`);
 }
 
