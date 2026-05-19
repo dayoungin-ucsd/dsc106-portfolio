@@ -300,18 +300,20 @@ circle.selected {
 } */
 
 .commit-filter {
-    display: flex;
-    align-items: baseline;
-    gap: 1em;
-    margin-bottom: 1.5em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5em 1em;
+    align-items: center;
 }
 
 #commit-progress {
-    flex: 1;
+    grid-column: 2;
+    width: 100%;
 }
 
 #commit-time {
-    margin-left: auto;
+    grid-column: 2;
+    justify-self: end;
     white-space: nowrap;
 }
 
