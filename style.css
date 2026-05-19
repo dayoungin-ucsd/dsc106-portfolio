@@ -195,8 +195,8 @@ path {
 
 .stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
-    gap: 1rem;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 2rem;
 }
 
 .stats dt {
