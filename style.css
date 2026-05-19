@@ -299,7 +299,7 @@ circle.selected {
     gap: 1em;
 } */
 
-.commit-filter {
+/* .commit-filter {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 0.5em 1em;
@@ -314,6 +314,22 @@ circle.selected {
 #commit-time {
     grid-column: 2;
     justify-self: end;
+    white-space: nowrap; 
+} */
+
+.commit-filter {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1.5em;
+}
+
+#commit-progress {
+    flex: 1;
+}
+
+#commit-time {
+    margin-left: auto;
     white-space: nowrap;
 }
 
