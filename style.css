@@ -272,8 +272,12 @@ circle.selected {
 
 .commit-filter {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1em;
+}
+
+.commit-filter label {
+    white-space: nowrap;
 }
 
 #commit-progress {
@@ -281,5 +285,5 @@ circle.selected {
 }
 
 #commit-time {
-    margin-left: auto;
+    white-space: nowrap;
 }
