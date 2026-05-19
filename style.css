@@ -195,17 +195,19 @@ path {
 
 .stats {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+    gap: 1rem;
 }
 
 .stats dt {
+    grid-row: 1;
     color: gray;
     font-size: 0.8em;
     text-transform: uppercase;
 }
 
 .stats dd {
+    grid-row: 2;
     margin: 0;
     font-size: 2em;
 }

@@ -73,16 +73,16 @@ function renderCommitInfo(data, commits) {
     dl.append('dt').text('Average line length');
     dl.append('dd').text(d3.mean(data, d => d.length).toFixed(2));
 
-    const workByPeriod = d3.rollups(
-    data,
-    (v) => v.length,
-    (d) => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' }),
-    );
+    // const workByPeriod = d3.rollups(
+    // data,
+    // (v) => v.length,
+    // (d) => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' }),
+    // );
 
-    const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
+    // const maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
 
-    dl.append('dt').text('Most active time of day');
-    dl.append('dd').text(maxPeriod);
+    // dl.append('dt').text('Most active time of day');
+    // dl.append('dd').text(maxPeriod);
 }
 
 function renderTooltipContent(commit) {
