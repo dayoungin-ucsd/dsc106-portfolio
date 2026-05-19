@@ -315,26 +315,38 @@ circle.selected {
     grid-column: 2;
     justify-self: end;
     white-space: nowrap; 
+} 
+    
+.commit-filter label {
+    white-space: nowrap;
 } */
 
 .commit-filter {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1em;
     align-items: center;
-    gap: 1em;
-    margin-bottom: 1.5em;
-}
-
-#commit-progress {
-    flex: 1;
-}
-
-#commit-time {
-    margin-left: auto;
-    white-space: nowrap;
 }
 
 .commit-filter label {
+    grid-column: 1;
+    grid-row: 1;
     white-space: nowrap;
+}
+
+#commit-progress {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+}
+
+#commit-time {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    white-space: nowrap;
+    color: gray;
 }
 
 #files {
