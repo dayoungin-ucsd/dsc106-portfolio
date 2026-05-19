@@ -16,6 +16,17 @@
         <time id="commit-time"></time>
     </div>
 
+    <dl id="files">
+        <!-- we want the following structure for each file:
+        <div>
+            <dt>
+            <code>{file.name}</code>
+            </dt>
+            <dd>{file.lines.length} lines</dd>
+        </div>
+        -->
+    </dl>
+    
     <div id="stats"></div>
 
     <div id="scrolly-1">
@@ -30,17 +41,6 @@
 
         </div>
     </div>
-
-    <dl id="files">
-        <!-- we want the following structure for each file:
-        <div>
-            <dt>
-            <code>{file.name}</code>
-            </dt>
-            <dd>{file.lines.length} lines</dd>
-        </div>
-        -->
-    </dl>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>
         <dt>Commit</dt>
