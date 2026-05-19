@@ -356,6 +356,7 @@ circle.selected {
 }
 
 #scrolly-1 {
+    align-items: start;
     position: relative;
     display: flex;
     gap: 1rem;
@@ -367,6 +368,7 @@ circle.selected {
 
 #scatter-story {
     position: relative;
+    flex: 0.8;
 }
 
 #scatter-plot {
@@ -375,6 +377,7 @@ circle.selected {
     left: 0;
     bottom: auto;
     height: 50vh;
+    flex: 1;
 }
 
 .step {
