@@ -408,10 +408,6 @@ circle.selected {
     flex: 1;
 }
 
-.step {
-    padding-bottom: 10vh;
-}
-
 #files small {
     display: block;
     color: gray;
